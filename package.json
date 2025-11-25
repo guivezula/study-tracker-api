@@ -5,7 +5,10 @@
   "main": "dist/app.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name schema",
+    "prisma: reset": "prisma migrate reset"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/guivezula/study-tracker-api#readme",
   "dependencies": {
+    "@prisma/client": "^6.19.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0"
@@ -28,6 +32,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
+    "prisma": "^6.19.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }

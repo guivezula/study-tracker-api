@@ -13,6 +13,9 @@ pids
 
 # Dependency directories
 node_modules/
+/prisma/dev.db
+/prisma/migrations
+package-lock.json
 
 # Builds
 dist/
@@ -37,3 +40,5 @@ dist/
 
 # MacOS files
 .DS_Store
+
+/src/generated/prisma
