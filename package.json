@@ -7,7 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev --name schema",
+    "prisma:migrate": "prisma migrate dev",
     "prisma: reset": "prisma migrate reset"
   },
   "repository": {
