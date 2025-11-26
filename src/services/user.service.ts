@@ -1,13 +1,17 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
-import type { IUser, IUserFilter } from "../model/user.model";
+import type { IUser, IUserFilter, IUserResponse } from "../model/user.model";
 
 export const createUser = async (data: IUser): Promise<IUser> => {
   return prisma.user.create({ data });
 };
 
-export const getUsers = async (filters: Partial<IUserFilter>): Promise<IUser[]> => {
+export const getUsers = async (
+  filters: Partial<IUserFilter>
+): Promise<IUserResponse> => {
   const where: Prisma.UserWhereInput = {};
+  let limit: number;
+  let skip: number;
 
   if (filters?.email) {
     where.email = { contains: filters.email };
@@ -16,7 +20,21 @@ export const getUsers = async (filters: Partial<IUserFilter>): Promise<IUser[]> 
   if (filters?.name) {
     where.name = { contains: filters.name };
   }
-  return prisma.user.findMany({ where });
+
+  if (filters.page && filters.limit) {
+    const page = filters.page;
+    limit = filters.limit;
+    skip = (page - 1) * limit;
+  }
+
+  const data = await prisma.user.findMany({ where, take: limit!, skip: skip! });
+
+  const total = await prisma.user.count({ where });
+
+  return {
+    data,
+    total,
+  };
 };
 
 export const getUserById = async (id: string): Promise<IUser | null> => {

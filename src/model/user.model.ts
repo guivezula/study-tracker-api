@@ -8,6 +8,13 @@ export interface IUser {
 }
 
 export interface IUserFilter {
-    name: string;
-    email: string;
+  name: string;
+  email: string;
+  page: number;
+  limit: number;
+}
+
+export interface IUserResponse {
+  data: IUser[];
+  total: number;
 }
