@@ -23,7 +23,10 @@ export const getUserById = async (id: string): Promise<IUser | null> => {
   return prisma.user.findUnique({ where: { id } });
 };
 
-export const updateUser = async (id: string, data: IUser) => {
+export const updateUser = async (
+  id: string,
+  data: Partial<IUser>
+): Promise<IUser> => {
   return prisma.user.update({
     where: { id },
     data,
