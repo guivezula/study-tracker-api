@@ -24,7 +24,9 @@ The goal is to build a clean and scalable API that exposes the same domain model
 
 ## 🚧 Project Status
 
-Currently in the initial development phase.
+- REST **Users API** is complete and documented.  
+- REST endpoints for **Courses** and **Enrollments** are planned.  
+- GraphQL layer is not yet implemented — will be added after REST is finalized.
 
 ## 🗂 Planned Features (initial)
 
@@ -34,5 +36,3 @@ Currently in the initial development phase.
 - Progress tracking
 - REST endpoints
 - GraphQL schema & resolvers
-
-More to come as development evolves.
