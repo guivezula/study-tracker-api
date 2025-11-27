@@ -49,13 +49,15 @@ Once implemented, this section will include:
 
 ---
 
-## 📘 Users API
+## 📘 API
 
-### GET /api/users
+### Users API
+
+#### GET /api/users
 
 Retrieves a paginated list of users, optionally filtered by name and/or email.
 
-#### Query Parameters
+##### Query Parameters
 | Parameter | Type | Required | Description |
 |----------|------|----------|-------------|
 | `page` | number | no | Page number |
@@ -63,12 +65,12 @@ Retrieves a paginated list of users, optionally filtered by name and/or email.
 | `name` | string | no | Filters users whose name contains the given value |
 | `email` | string | no | Filters users whose email contains the given value |
 
-#### Example Request
+##### Example Request
 
 ```http
 GET /api/users?page=1&limit=10&name=john&email=gmail
 ```
-#### Example Response (200)
+##### Example Response (200)
 ```json
 {
   "data": [
@@ -83,17 +85,17 @@ GET /api/users?page=1&limit=10&name=john&email=gmail
   "total": 1
 }
 ```
-### POST /api/users
+#### POST /api/users
 
 Creates a new user.
 
-#### Request Body
+##### Request Body
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `name` | string | yes | The user's full name |
 | `email` | string | yes | Must be a valid and unique email address |
 
-#### Example Request
+##### Example Request
 ```http
 POST /api/users
 Content-Type: application/json
@@ -104,7 +106,7 @@ Content-Type: application/json
 }
 ```
 
-#### Example Response (201)
+##### Example Response (201)
 ```json
 {
   "id": 1,
@@ -115,21 +117,21 @@ Content-Type: application/json
 }
 ```
 
-### GET /api/users/:id
+#### GET /api/users/:id
 
 Returns a single user by ID.
 
-#### Path Parameters
+##### Path Parameters
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `id` | number | yes | The ID of the user to retrieve |
 
-#### Example Request
+##### Example Request
 ```http
 GET /api/users/1
 ```
 
-#### Example Response (200)
+##### Example Response (200)
 ```json
 {
   "id": 1,
@@ -140,16 +142,16 @@ GET /api/users/1
 }
 ```
 
-### PUT /api/users/:id
+#### PUT /api/users/:id
 
 Updates an existing user.
 
-#### Path Parameters
+##### Path Parameters
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `id` | number | yes | The ID of the user to update |
 
-#### Request Body
+##### Request Body
 At least one field is required.
 
 | Field | Type | Required | Description |
@@ -157,7 +159,7 @@ At least one field is required.
 | `name` | string | no | New name of the user |
 | `email` | string | no | New email of the user |
 
-#### Example Request
+##### Example Request
 ```http
 PUT /api/users/1
 Content-Type: application/json
@@ -167,7 +169,7 @@ Content-Type: application/json
   "email": "updated_email@example.com"
 }
 ```
-#### Example of Response (200)
+##### Example of Response (200)
 ```json
 {
   "id": 1,
@@ -178,16 +180,16 @@ Content-Type: application/json
 }
 ```
 
-### DELETE /api/users/:id
+#### DELETE /api/users/:id
 
 Deletes a user by ID.
 
-#### Path Parameters
+##### Path Parameters
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `id` | number | yes | The ID of the user to delete |
 
-#### Example Request
+##### Example Request
 ```http
 DELETE   /api/users/1
 ```
