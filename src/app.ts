@@ -1,5 +1,7 @@
 import cors from "cors";
 import express from "express";
+import { graphqlHTTP } from "express-graphql";
+import { schema } from "./graphql/schema";
 import userRoutes from "./routes/user.routes";
 
 const app = express();
@@ -7,7 +9,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//Routes
-app.use("/users", userRoutes);
+// --------- REST endpoints ---------
+app.use("/api/users", userRoutes);
+
+// --------- GraphQL Endpoint ---------
+
+app.use(
+  "/query",
+  graphqlHTTP({
+    schema,
+    graphiql: process.env.NODE_ENV !== "production",
+  })
+);
 
 export default app;

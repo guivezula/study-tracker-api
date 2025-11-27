@@ -51,7 +51,7 @@ Once implemented, this section will include:
 
 ## 📘 Users API
 
-### GET /users
+### GET /api/users
 
 Retrieves a paginated list of users, optionally filtered by name and/or email.
 
@@ -66,7 +66,7 @@ Retrieves a paginated list of users, optionally filtered by name and/or email.
 #### Example Request
 
 ```http
-GET /users?page=1&limit=10&name=john&email=gmail
+GET /api/users?page=1&limit=10&name=john&email=gmail
 ```
 #### Example Response (200)
 ```json
@@ -83,7 +83,7 @@ GET /users?page=1&limit=10&name=john&email=gmail
   "total": 1
 }
 ```
-### POST /users
+### POST /api/users
 
 Creates a new user.
 
@@ -95,7 +95,7 @@ Creates a new user.
 
 #### Example Request
 ```http
-POST /users
+POST /api/users
 Content-Type: application/json
 
 {
@@ -115,7 +115,7 @@ Content-Type: application/json
 }
 ```
 
-### GET /users/:id
+### GET /api/users/:id
 
 Returns a single user by ID.
 
@@ -126,7 +126,7 @@ Returns a single user by ID.
 
 #### Example Request
 ```http
-GET /users/1
+GET /api/users/1
 ```
 
 #### Example Response (200)
@@ -140,7 +140,7 @@ GET /users/1
 }
 ```
 
-### PUT /users/:id
+### PUT /api/users/:id
 
 Updates an existing user.
 
@@ -159,7 +159,7 @@ At least one field is required.
 
 #### Example Request
 ```http
-PUT /users/1
+PUT /api/users/1
 Content-Type: application/json
 
 {
@@ -178,7 +178,7 @@ Content-Type: application/json
 }
 ```
 
-### DELETE /users/:id
+### DELETE /api/users/:id
 
 Deletes a user by ID.
 
@@ -189,7 +189,7 @@ Deletes a user by ID.
 
 #### Example Request
 ```http
-DELETE   /users/1
+DELETE   /api/users/1
 ```
 
 Response 204 (No content returned)
