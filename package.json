@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/guivezula/study-tracker-api#readme",
   "dependencies": {
+    "@graphql-tools/load-files": "^7.0.1",
     "@graphql-tools/schema": "^10.0.29",
     "@prisma/client": "^6.19.0",
     "cors": "^2.8.5",

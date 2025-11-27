@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
+import { createContext } from "./graphql/context";
 import { schema } from "./graphql/schema";
 import userRoutes from "./routes/user.routes";
 
@@ -19,6 +20,7 @@ app.use(
   graphqlHTTP({
     schema,
     graphiql: process.env.NODE_ENV !== "production",
+    context: createContext(),
   })
 );
 

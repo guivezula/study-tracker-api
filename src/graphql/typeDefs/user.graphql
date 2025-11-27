@@ -5,7 +5,7 @@
 # ----------- Types -----------
 
 type User {
-  id: Int!
+  id: ID!
   name: String!
   email: String!
   createdAt: String!
@@ -17,11 +17,8 @@ type User {
 input UserFilterInput {
   name: String
   email: String
-}
-
-input PaginationInput {
-  page: Int = 1
-  pageSize: Int = 10
+  page: Int
+  limit: Int
 }
 
 input CreateUserInput {
@@ -45,17 +42,16 @@ type UserList {
 
 type Query {
   users(
-    filter: UserFilterInput
-    pagination: PaginationInput
+    filter: IUserFilterInput
   ): UserList!
 
-  user(id: Int!): User
+  user(id: String!): User
 }
 
 # ----------- Mutations -----------
 
 type Mutation {
   createUser(input: CreateUserInput!): User!
-  updateUser(id: Int!, input: UpdateUserInput!): User!
-  deleteUser(id: Int!): Boolean!
+  updateUser(id: String!, input: UpdateUserInput!): User!
+  deleteUser(id: String!): Boolean!
 }
