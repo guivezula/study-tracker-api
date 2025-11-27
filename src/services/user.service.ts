@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
-import type { IUser, IUserFilter, IUserResponse } from "../model/user.model";
+import type { IUser, IUserFilter, IUserResponse } from "../models/user.model";
 
 export const createUser = async (data: IUser): Promise<IUser> => {
   return prisma.user.create({ data });
