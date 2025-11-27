@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import * as UserService from "../services/user.service";
+import * as UserService from "../../services/user.service";
 
 export const createUser = async (req: Request, res: Response) => {
   try {

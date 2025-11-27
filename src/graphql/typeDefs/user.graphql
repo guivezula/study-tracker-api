@@ -42,7 +42,7 @@ type UserList {
 
 type Query {
   users(
-    filter: IUserFilterInput
+    filter: UserFilterInput
   ): UserList!
 
   user(id: String!): User

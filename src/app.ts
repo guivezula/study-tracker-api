@@ -3,7 +3,7 @@ import express from "express";
 import { graphqlHTTP } from "express-graphql";
 import { createContext } from "./graphql/context";
 import { schema } from "./graphql/schema";
-import userRoutes from "./routes/user.routes";
+import userRoutes from "./rest/routes/user.routes";
 
 const app = express();
 
