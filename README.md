@@ -27,7 +27,20 @@ The goal is to build a clean and scalable API that exposes the same domain model
 - Enrollments
 - Progress tracking
 - REST endpoints
-- GraphQL schema & resolvers 
+- GraphQL schema & resolvers
+
+## ⏳ Progress Status: **In Progress**
+- [x] Project setup with Node.js and Express
+- [x] Database integration with Prisma ORM and SQLite
+- [x] Basic REST API endpoints for Users and Courses
+- [x] GraphQL schema and resolvers for Users and Courses
+- [x] Documentation with OpenAPI/Swagger
+- [x] Documentation with GraphiQL interface
+- [ ] Implement Enrollments and Progress tracking on Rest and GraphQL
+- [ ] Testing (unit and integration tests)
+- [ ] Deployment to a cloud provider (Thinking about yet to decide)
+- [ ] Dockerization of the application (Thinking about yet to decide)
+
 
 ## 🚀 Getting Started
 1. Clone the repository  
