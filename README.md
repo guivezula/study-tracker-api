@@ -52,8 +52,8 @@ The goal is to build a clean and scalable API that exposes the same domain model
 
 5. Generate Prisma client and run migrations  
     ```bash
-        npm run prisma:generate
-        npm run prisma:migrate ## Give a name to the migration when prompted
+    npm run prisma:generate
+    npm run prisma:migrate ## Give a name to the migration when prompted
     ```
 
 6. Start the development server  

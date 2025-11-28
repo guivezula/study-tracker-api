@@ -5,6 +5,7 @@ import swaggerUi from "swagger-ui-express";
 import { createContext } from "./graphql/context";
 import { schema } from "./graphql/schema";
 import { swaggerSpec } from "./rest/docs/swagger.config";
+import courseRoutes from "./rest/routes/course.routes";
 import userRoutes from "./rest/routes/user.routes";
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // --------- REST endpoints ---------
 app.use("/api/users", userRoutes);
+app.use("/api/courses", courseRoutes);
 
 // --------- SWAGGER ----------------
 

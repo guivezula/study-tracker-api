@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: Study Tracker API - Courses
+  version: 1.0.0
+paths:
+  /api/courses:
+    get:
+      summary: Returns a list of courses
+      tags:
+        - Courses
+      parameters:
+        - in: query
+          name: title
+          schema:
+            type: string
+          description: Filter by course title
+        - in: query
+          name: page
+          schema:
+            type: integer
+        - in: query
+          name: limit
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of courses with pagination
+        '500':
+          description: Unexpected server error
+    post:
+      summary: Create a new course
+      tags:
+        - Courses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+              required: 
+                - title
+              
+      responses:
+        '201':
+          description: Course created successfully
+        '400':
+          description: Invalid input
+        '500':
+          description: Unexpected server error  
+  /api/courses/{courseId}:
+    get:
+      summary: Get course by ID
+      tags:
+        - Courses
+      parameters: 
+        - in: path
+          name: courseId
+          required: true
+          schema:
+            type: string
+          description: The course ID
+      responses:
+        '200':
+          description: Course details
+        '404':
+          description: Course not found
+        '500':
+          description: Unexpected server error
+    put:
+      summary: Update course by ID
+      tags:
+        - Courses
+      parameters: 
+        - in: path
+          name: courseId
+          required: true
+          schema:
+            type: string
+          description: The course ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: Course updated successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: Course not found
+        '500':
+          description: Unexpected server error
+    delete:
+      summary: Delete course by ID
+      tags:
+        - Courses
+      parameters: 
+        - in: path
+          name: courseId
+          required: true
+          schema:
+            type: string
+          description: The course ID
+      responses:
+        '204':
+          description: Course deleted successfully
+        '404':
+          description: Course not found
+        '500':
+          description: Unexpected server error  
