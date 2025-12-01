@@ -1,0 +1,47 @@
+type Module {
+    id: ID!
+    title: String!
+    description: String
+    hours: Int!
+
+    courseId: ID!
+
+    createdAt: String!
+    updatedAt: String!
+}
+
+input ModuleFilterInput {
+    courseId: ID
+}
+
+input CreateModuleInput {
+    title: String!
+    description: String
+    hours: Int!
+    courseId: ID!
+}
+
+input UpdateModuleInput {
+    title: String
+    description: String
+    hours: Int
+}
+
+type ModuleList {
+    data: [Module!]!
+    total: Int!
+}
+
+type Query {
+    modules(
+        filter: ModuleFilterInput
+    ): ModuleList!
+
+    module(id: String!): Module
+}
+
+type Mutation {
+    createModule(input: CreateModuleInput!): Module!
+    updateModule(id: String!, input: UpdateModuleInput!): Module!
+    deleteModule(id: String!): Boolean!
+}

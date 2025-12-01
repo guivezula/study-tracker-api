@@ -2,6 +2,10 @@ type Course {
     id: ID!
     title: String!
     description: String
+    totalHours: Int!
+
+    modules: [Module!]!
+
     createdAt: String!
     updatedAt: String!
 }

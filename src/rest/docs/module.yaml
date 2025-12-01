@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Study Tracker API - Modules
+  version: 1.0.0
+paths:
+  /api/modules:
+    get:
+      summary: Returns a list of modules
+      tags:
+        - Modules
+      parameters:
+        - in: query
+          name: courseId
+          schema:
+            type: string
+          description: Filter by course ID
+      responses:
+        '200':
+          description: List of modules
+        '500':
+          description: Unexpected server error
+    post:
+      summary: Create a new module
+      tags:
+        - Modules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                courseId:
+                  type: string
+                hours:
+                  type: integer
+              required: 
+                - title
+                - courseId
+                - hours
+      responses:
+        '201': 
+          description: Module created successfully
+        '400':
+          description: Invalid input
+        '500':
+          description: Unexpected server error  
+  /api/modules/{moduleId}:
+    get:
+      summary: Get module by ID
+      tags:
+        - Modules
+      parameters:
+        - in: path
+          name: moduleId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Module details
+        '404':
+          description: Module not found
+    put:
+      summary: Update module by ID
+      tags:
+        - Modules
+      parameters:
+        - in: path
+          name: moduleId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                hours:
+                  type: integer
+      responses:
+        '200':
+          description: Module updated successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: Module not found
+        '500':
+          description: Unexpected server error
+    delete:
+      summary: Delete module by ID
+      tags:
+        - Modules
+      parameters:
+        - in: path
+          name: moduleId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Module deleted successfully
+        '404':
+          description: Module not found
+        '500':
+          description: Unexpected server error 
+      
