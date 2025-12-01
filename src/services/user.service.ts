@@ -1,14 +1,19 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
-import type { IUser, IUserFilter, IUserResponse } from "../models/user.model";
+import type {
+  UserDTO,
+  UserFilter,
+  UserListResponse,
+  UserResponse,
+} from "../models/user.model";
 
-export const createUser = async (data: IUser): Promise<IUser> => {
+export const createUser = async (data: UserDTO): Promise<UserResponse> => {
   return prisma.user.create({ data });
 };
 
 export const getUsers = async (
-  filters: Partial<IUserFilter>
-): Promise<IUserResponse> => {
+  filters: Partial<UserFilter>
+): Promise<UserListResponse> => {
   const where: Prisma.UserWhereInput = {};
   let limit: number;
   let skip: number;
@@ -37,20 +42,20 @@ export const getUsers = async (
   };
 };
 
-export const getUserById = async (id: string): Promise<IUser | null> => {
+export const getUserById = async (id: string): Promise<UserResponse | null> => {
   return prisma.user.findUnique({ where: { id } });
 };
 
 export const updateUser = async (
   id: string,
-  data: Partial<IUser>
-): Promise<IUser> => {
+  data: Partial<UserDTO>
+): Promise<UserResponse> => {
   return prisma.user.update({
     where: { id },
     data,
   });
 };
 
-export const deleteUser = async (id: string): Promise<IUser> => {
+export const deleteUser = async (id: string): Promise<UserResponse> => {
   return prisma.user.delete({ where: { id } });
 };

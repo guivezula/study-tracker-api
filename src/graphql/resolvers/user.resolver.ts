@@ -1,17 +1,26 @@
-import type { IUser, IUserFilter } from "../../models/user.model";
+import type {
+  UserDTO,
+  UserFilter,
+  UserListResponse,
+  UserResponse,
+} from "../../models/user.model";
 import type { GraphQLContext } from "../context";
 
 export const userResolvers = {
   Query: {
     users: async (
       _: unknown,
-      { filter }: { filter: Partial<IUserFilter> },
+      { filter }: { filter: Partial<UserFilter> },
       context: GraphQLContext
-    ) => {
+    ): Promise<UserListResponse> => {
       return context.userService.getUsers(filter || {});
     },
 
-    user: (_: unknown, { id }: { id: string }, context: GraphQLContext) => {
+    user: (
+      _: unknown,
+      { id }: { id: string },
+      context: GraphQLContext
+    ): Promise<UserResponse | null> => {
       return context.userService.getUserById(id);
     },
   },
@@ -19,17 +28,17 @@ export const userResolvers = {
   Mutation: {
     createUser: (
       _: unknown,
-      { input }: { input: IUser },
+      { input }: { input: UserDTO },
       context: GraphQLContext
-    ) => {
+    ): Promise<UserResponse> => {
       return context.userService.createUser(input);
     },
 
     updateUser: (
       _: unknown,
-      { id, input }: { id: string; input: Partial<IUser> },
+      { id, input }: { id: string; input: Partial<UserDTO> },
       context: GraphQLContext
-    ) => {
+    ): Promise<UserResponse> => {
       return context.userService.updateUser(id, input);
     },
 
@@ -37,7 +46,7 @@ export const userResolvers = {
       _: unknown,
       { id }: { id: string },
       context: GraphQLContext
-    ) => {
+    ): Promise<boolean> => {
       await context.userService.deleteUser(id);
       return true;
     },

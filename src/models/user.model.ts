@@ -1,20 +1,25 @@
-export interface IUser {
-    id: string;
-    name: string;
-    email: string;
+import type { Prisma } from "@prisma/client";
 
-    createdAt: Date;
-    updatedAt: Date;
+interface IUserDTO {
+  name: string;
+  email: string;
 }
+export type UserDTO = IUserDTO;
 
-export interface IUserFilter {
+export type UserResponse = Prisma.UserGetPayload<{}>;
+
+interface IUserFilter {
   name: string;
   email: string;
   page: number;
   limit: number;
 }
 
-export interface IUserResponse {
-  data: IUser[];
+export type UserFilter = IUserFilter;
+
+interface IUserListResponse {
+  data: UserResponse[];
   total: number;
 }
+
+export type UserListResponse = IUserListResponse;
