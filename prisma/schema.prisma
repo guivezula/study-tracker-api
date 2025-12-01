@@ -43,16 +43,14 @@ model Enrollment {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
 
-  // relations
   user   User   @relation(fields: [userId], references: [id])
   course Course @relation(fields: [courseId], references: [id])
 
-  // prevent duplicate enrollment
   @@unique([userId, courseId])
 }
 
 model Module {
-  id          String @default(cuid())
+  id          String @id @default(cuid())
   courseId    String
   title       String
   description String?
@@ -63,7 +61,5 @@ model Module {
 
   course      Course   @relation(fields: [courseId], references: [id])
 
-  @@id([courseId, id])
-
-  @@unique([courseId, id])
+  @@unique([courseId, title])
 }
