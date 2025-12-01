@@ -30,6 +30,7 @@ model Course {
   updatedAt    DateTime      @updatedAt
 
   enrollments  Enrollment[]
+  modules      Module[]
 }
 
 model Enrollment {
@@ -48,4 +49,21 @@ model Enrollment {
 
   // prevent duplicate enrollment
   @@unique([userId, courseId])
+}
+
+model Module {
+  id          String
+  courseId    String
+  title       String
+  description String?
+  hours       Int
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  course      Course   @relation(fields: [courseId], references: [id])
+
+  @@id([courseId, id])
+
+  @@unique([courseId, id])
 }
