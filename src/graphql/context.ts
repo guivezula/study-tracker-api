@@ -1,10 +1,12 @@
 import * as courseService from "../services/course.service";
 import * as userService from "../services/user.service";
 
-export interface GraphQLContext {
+interface IGraphQLContext {
   userService: typeof userService;
   courseService: typeof courseService;
 }
+
+export type GraphQLContext = IGraphQLContext;
 
 export function createContext(): GraphQLContext {
   return {

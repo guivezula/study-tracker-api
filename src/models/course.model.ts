@@ -1,18 +1,29 @@
-export interface ICourse {
-    id: string;
-    title: string;
-    description: string | null;
-    createdAt: Date;
-    updatedAt: Date;
+import type { Prisma } from "@prisma/client";
+
+interface ICourseDTO {
+  title: string;
+  description?: string;
 }
 
-export interface ICourseFilter {
+export type CourseDTO = ICourseDTO;
+
+export type CourseResponse = Prisma.CourseGetPayload<{
+  include: {
+    modules: true;
+  };
+}>;
+
+interface ICourseFilter {
   title: string;
   page: number;
   limit: number;
 }
 
-export interface ICourseResponse {
-  data: ICourse[];
+export type CourseFilter = ICourseFilter;
+
+interface ICourseListResponse {
+  data: CourseResponse[];
   total: number;
 }
+
+export type CourseListResponse = ICourseListResponse;
