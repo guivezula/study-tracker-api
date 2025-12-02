@@ -33,8 +33,6 @@ export const getEnrollments = async (filter: Partial<EnrollmentFilter>): Promise
         },
     });
 
-    console.log(data);
-
     const total = await prisma.enrollment.count({ where });
 
     return {
