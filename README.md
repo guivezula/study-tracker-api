@@ -36,7 +36,8 @@ The goal is to build a clean and scalable API that exposes the same domain model
 - [x] GraphQL schema and resolvers for Users and Courses
 - [x] Documentation with OpenAPI/Swagger
 - [x] Documentation with GraphiQL interface
-- [ ] Implement Enrollments and Progress tracking on Rest and GraphQL
+- [x] Implement Enrollments and Progress tracking on Rest and GraphQL
+- [ ] Add domain validations when updating course and module
 - [ ] Testing (unit and integration tests)
 - [ ] Deployment to a cloud provider (Thinking about yet to decide)
 - [ ] Dockerization of the application (Thinking about yet to decide)
