@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  title: Study Tracker API - Module Progress
+  version: 1.0.0
+paths:
+  /api/progress:
+    get:
+      summary: Returns a list of module progress
+      tags:
+        - Module Progress
+      parameters:
+        - in: query
+          name: enrollmentId
+          schema:
+            type: string
+          description: Filter by enrollment ID
+        - in: query
+          name: moduleId
+          schema:
+            type: string
+          description: Filter by module ID
+        - in: query
+          name: completed
+          schema:
+            type: boolean
+          description: Filter by completed module
+      responses:
+        '200':
+          description: List of progress
+        '500':
+          description: Unexpected server error
+    post:
+      summary: Start a new module progress
+      tags:
+        - Module Progress
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enrollmentId:
+                  type: string
+                moduleId:
+                  type: string
+              required: 
+                - enrollmentId
+                - moduleId
+      responses:
+        '201': 
+          description: Progress created successfully
+        '400':
+          description: Invalid input
+        '500':
+          description: Unexpected server error  
+  /api/progress/{id}:
+    get:
+      summary: Get module progress by ID
+      tags:
+        - Module Progress
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Progress details
+        '404':
+          description: Progress not found
+    put:
+      summary: Complete module progress by ID
+      tags:
+        - Module Progress
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Module progress completed successfully
+        '404':
+          description: Module progress not found
+        '500':
+          description: Unexpected server error 
+    delete:
+      summary: Delete module progress by ID
+      tags:
+        - Module Progress
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Module progress deleted successfully
+        '404':
+          description: Module progress not found
+        '500':
+          description: Unexpected server error 
+      

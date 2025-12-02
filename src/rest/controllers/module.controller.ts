@@ -3,8 +3,8 @@ import * as moduleService from '../../services/module.service';
 
 export const createModule = async (req: Request, res: Response) => {
   try {
-    const course = await moduleService.createModule(req.body);
-    res.status(201).json(course);
+    const module = await moduleService.createModule(req.body);
+    res.status(201).json(module);
   } catch (err: any) {
     res.status(400).json({ error: err.message });
   }

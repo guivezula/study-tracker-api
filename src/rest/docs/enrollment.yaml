@@ -49,14 +49,14 @@ paths:
           description: Invalid input
         '500':
           description: Unexpected server error  
-  /api/enrollments/{enrollmentId}:
+  /api/enrollments/{id}:
     get:
       summary: Get enrollment by ID
       tags:
         - Enrollments
       parameters:
         - in: path
-          name: enrollmentId
+          name: id
           required: true
           schema:
             type: string
@@ -71,7 +71,7 @@ paths:
         - Enrollments
       parameters:
         - in: path
-          name: enrollmentId
+          name: id
           required: true
           schema:
             type: string

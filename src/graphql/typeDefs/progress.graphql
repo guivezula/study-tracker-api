@@ -1,0 +1,42 @@
+type Progress {
+    id: ID!
+    enrollmentId: ID!
+    moduleId: ID!
+    completed: Boolean!
+
+    enrollment: Enrollment!
+    module: Module!
+
+    createdAt: String!
+    updatedAt: String!
+}
+
+input ProgressFilterInput {
+    enrollmentId: ID
+    moduleId: ID
+    completed: Boolean
+}
+
+input CreateProgressInput {
+    enrollmentId: ID!
+    moduleId: ID!
+}
+
+type ProgressList {
+    data: [Progress!]!
+    total: Int!
+}
+
+type Query {
+    progresses(
+        filter: ProgressFilterInput
+    ): ProgressList!
+
+    progress(id: String!): Progress
+}
+
+type Mutation {
+    startModuleProgress(input: CreateProgressInput!): Progress!
+    completeModuleProgress(id: String!): Progress!
+    deleteModuleProgress(id: String!): Boolean!
+}

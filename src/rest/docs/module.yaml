@@ -49,14 +49,14 @@ paths:
           description: Invalid input
         '500':
           description: Unexpected server error  
-  /api/modules/{moduleId}:
+  /api/modules/{id}:
     get:
       summary: Get module by ID
       tags:
         - Modules
       parameters:
         - in: path
-          name: moduleId
+          name: id
           required: true
           schema:
             type: string
@@ -71,7 +71,7 @@ paths:
         - Modules
       parameters:
         - in: path
-          name: moduleId
+          name: id
           required: true
           schema:
             type: string
@@ -103,7 +103,7 @@ paths:
         - Modules
       parameters:
         - in: path
-          name: moduleId
+          name: id
           required: true
           schema:
             type: string

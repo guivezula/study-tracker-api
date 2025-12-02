@@ -52,14 +52,14 @@ paths:
           description: Invalid input
         '500':
           description: Unexpected server error  
-  /api/courses/{courseId}:
+  /api/courses/{id}:
     get:
       summary: Get course by ID
       tags:
         - Courses
       parameters: 
         - in: path
-          name: courseId
+          name: id
           required: true
           schema:
             type: string
@@ -77,7 +77,7 @@ paths:
         - Courses
       parameters: 
         - in: path
-          name: courseId
+          name: id
           required: true
           schema:
             type: string
@@ -108,7 +108,7 @@ paths:
         - Courses
       parameters: 
         - in: path
-          name: courseId
+          name: id
           required: true
           schema:
             type: string

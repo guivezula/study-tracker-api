@@ -14,12 +14,7 @@ export type EnrollmentResponse = Prisma.EnrollmentGetPayload<{
     };
 }>;
 
-interface IEnrollmentFilter {
-    userId: string;
-    courseId: string;
-}
-
-export type EnrollmentFilter = IEnrollmentFilter;
+export type EnrollmentFilter = IEnrollmentDTO & { completed: boolean };
 
 interface IEnrollmentListResponse {
     data: EnrollmentResponse[];

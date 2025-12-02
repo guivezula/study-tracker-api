@@ -3,6 +3,7 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { courseResolver } from "./resolvers/course.resolver";
 import { enrollmentResolver } from "./resolvers/enrollment.resolver";
 import { moduleResolver } from "./resolvers/module.resolver";
+import { progressResolver } from "./resolvers/progress.resolver";
 import { userResolvers } from "./resolvers/user.resolver";
 
 // Load SDL from .graphql file
@@ -15,5 +16,6 @@ export const schema = makeExecutableSchema({
     courseResolver,
     moduleResolver,
     enrollmentResolver,
+    progressResolver,
   ],
 });
