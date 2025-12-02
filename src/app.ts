@@ -6,6 +6,7 @@ import { createContext } from "./graphql/context";
 import { schema } from "./graphql/schema";
 import { swaggerSpec } from "./rest/docs/swagger.config";
 import courseRoutes from "./rest/routes/course.routes";
+import enrollmentRoutes from "./rest/routes/enrollment.routes";
 import moduleRoutes from "./rest/routes/module.routes";
 import userRoutes from "./rest/routes/user.routes";
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/modules", moduleRoutes);
+app.use("/api/enrollments", enrollmentRoutes);
 
 // --------- SWAGGER ----------------
 

@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Study Tracker API - Enrollments
+  version: 1.0.0
+paths:
+  /api/enrollments:
+    get:
+      summary: Returns a list of enrollments
+      tags:
+        - Enrollments
+      parameters:
+        - in: query
+          name: courseId
+          schema:
+            type: string
+          description: Filter by course ID
+        - in: query
+          name: userId
+          schema:
+            type: string
+          description: Filter by user ID
+      responses:
+        '200':
+          description: List of enrollments
+        '500':
+          description: Unexpected server error
+    post:
+      summary: Create a new enrollment
+      tags:
+        - Enrollments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                courseId:
+                  type: string
+                userId:
+                  type: string
+              required: 
+                - courseId
+                - userId
+      responses:
+        '201': 
+          description: Enrollment created successfully
+        '400':
+          description: Invalid input
+        '500':
+          description: Unexpected server error  
+  /api/enrollments/{enrollmentId}:
+    get:
+      summary: Get enrollment by ID
+      tags:
+        - Enrollments
+      parameters:
+        - in: path
+          name: enrollmentId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Enrollment details
+        '404':
+          description: Enrollment not found
+    delete:
+      summary: Delete enrollment by ID
+      tags:
+        - Enrollments
+      parameters:
+        - in: path
+          name: enrollmentId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Enrollment deleted successfully
+        '404':
+          description: Enrollment not found
+        '500':
+          description: Unexpected server error 
+      
