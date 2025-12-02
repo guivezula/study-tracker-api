@@ -1,0 +1,40 @@
+type Enrollment {
+    id: ID!
+    courseId: ID!
+    userId: ID!
+    progress: Float
+
+    course: Course!
+    user: User!
+
+    createdAt: String!
+    updatedAt: String!
+}
+
+input EnrollmentFilterInput {
+    courseId: ID
+    userId: ID
+}
+
+input CreateEnrollmentInput {
+    courseId: ID!
+    userId: ID!
+}
+
+type EnrollmentList {
+    data: [Enrollment!]!
+    total: Int!
+}
+
+type Query {
+    enrollments(
+        filter: EnrollmentFilterInput
+    ): EnrollmentList!
+
+    enrollment(id: String!): Enrollment
+}
+
+type Mutation {
+    createEnrollment(input: CreateEnrollmentInput!): Enrollment!
+    deleteEnrollment(id: String!): Boolean!
+}
