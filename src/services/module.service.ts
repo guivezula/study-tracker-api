@@ -18,23 +18,25 @@ export const createModule = async (data: ModuleDTO): Promise<ModuleResponse> => 
     return module;
 };
 
-export const getModules = async (filter: Partial<ModuleFilter>): Promise<ModuleListResponse> => {
-    const where: Prisma.ModuleWhereInput = {};
+export const getModules = async (
+  filter: ModuleFilter
+): Promise<ModuleListResponse> => {
+  const where: Prisma.ModuleWhereInput = {};
 
-    if (filter?.courseId) {
-        where.courseId = filter.courseId;
-    }
+  if (filter?.courseId) {
+    where.courseId = filter.courseId;
+  }
 
-    const data = await prisma.module.findMany({
-        where,
-    });
+  const data = await prisma.module.findMany({
+    where,
+  });
 
-    const total = await prisma.module.count({ where });
+  const total = await prisma.module.count({ where });
 
-    return {
-        data,
-        total,
-    };
+  return {
+    data,
+    total,
+  };
 };
 
 export const getModuleById = async (id: string): Promise<ModuleResponse | null> => {

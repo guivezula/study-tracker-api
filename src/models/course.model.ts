@@ -1,11 +1,6 @@
 import type { Prisma } from "@prisma/client";
-
-interface ICourseDTO {
-  title: string;
-  description?: string;
-}
-
-export type CourseDTO = ICourseDTO;
+import type { Filter } from "./filter.model";
+import type { ListResponse } from "./list.model";
 
 export type CourseResponse = Prisma.CourseGetPayload<{
   include: {
@@ -13,17 +8,8 @@ export type CourseResponse = Prisma.CourseGetPayload<{
   };
 }>;
 
-interface ICourseFilter {
-  title: string;
-  page: number;
-  limit: number;
-}
+export type CourseDTO = Pick<CourseResponse, "title" | "description">;
 
-export type CourseFilter = ICourseFilter;
+export type CourseFilter = Filter<Pick<CourseDTO, "title">>;
 
-interface ICourseListResponse {
-  data: CourseResponse[];
-  total: number;
-}
-
-export type CourseListResponse = ICourseListResponse;
+export type CourseListResponse = ListResponse<CourseResponse>;

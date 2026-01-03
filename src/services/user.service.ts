@@ -11,9 +11,7 @@ export const createUser = async (data: UserDTO): Promise<UserResponse> => {
   return prisma.user.create({ data });
 };
 
-export const getUsers = async (
-  filters: Partial<UserFilter>
-): Promise<UserListResponse> => {
+export const getUsers = async (filters: UserFilter): Promise<UserListResponse> => {
   const where: Prisma.UserWhereInput = {};
   let limit: number;
   let skip: number;

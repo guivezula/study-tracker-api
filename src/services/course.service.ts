@@ -14,7 +14,7 @@ export const createCourse = async (
 };
 
 export const getCourses = async (
-  filter: Partial<CourseFilter>
+  filter: CourseFilter
 ): Promise<CourseListResponse> => {
   const where: Prisma.CourseWhereInput = {};
   let limit: number;

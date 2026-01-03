@@ -1,24 +1,19 @@
 import type { Prisma } from "@prisma/client";
-
-interface IEnrollmentDTO {
-    userId: string;
-    courseId: string;
-}
-
-export type EnrollmentDTO = IEnrollmentDTO;
+import type { Filter } from "./filter.model";
+import type { ListResponse } from "./list.model";
 
 export type EnrollmentResponse = Prisma.EnrollmentGetPayload<{
-    include: {
-        user: true;
-        course: true;
-    };
+  include: {
+    user: true;
+    course: true;
+  };
 }>;
 
-export type EnrollmentFilter = IEnrollmentDTO & { completed: boolean };
+export type EnrollmentDTO = Pick<EnrollmentResponse, "courseId" | "userId">;
 
-interface IEnrollmentListResponse {
-    data: EnrollmentResponse[];
-    total: number;
-}
+export type EnrollmentFilter = Filter<
+  Pick<EnrollmentResponse, "courseId" | "userId">,
+  {}
+>;
 
-export type EnrollmentListResponse = IEnrollmentListResponse;
+export type EnrollmentListResponse = ListResponse<EnrollmentResponse>;

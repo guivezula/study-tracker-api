@@ -14,31 +14,33 @@ export const createEnrollment = async (
   });
 };
 
-export const getEnrollments = async (filter: Partial<EnrollmentFilter>): Promise<EnrollmentListResponse> => {
-    const where: Prisma.EnrollmentWhereInput = {};
+export const getEnrollments = async (
+  filter: EnrollmentFilter
+): Promise<EnrollmentListResponse> => {
+  const where: Prisma.EnrollmentWhereInput = {};
 
-    if (filter?.userId) {
-        where.userId = filter.userId;
-    }
+  if (filter?.userId) {
+    where.userId = filter.userId;
+  }
 
-    if (filter?.courseId) {
-        where.courseId = filter.courseId;
-    }
+  if (filter?.courseId) {
+    where.courseId = filter.courseId;
+  }
 
-    const data = await prisma.enrollment.findMany({
-        where,
-        include: {
-            user: true,
-            course: true,
-        },
-    });
+  const data = await prisma.enrollment.findMany({
+    where,
+    include: {
+      user: true,
+      course: true,
+    },
+  });
 
-    const total = await prisma.enrollment.count({ where });
+  const total = await prisma.enrollment.count({ where });
 
-    return {
-        data,
-        total,
-    };
+  return {
+    data,
+    total,
+  };
 };
 
 export const getEnrollmentById = async (

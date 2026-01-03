@@ -1,25 +1,14 @@
 import type { Prisma } from "@prisma/client";
-
-interface IModuleDTO {
-    courseId: string;
-    title: string;
-    description?: string;
-    hours: number;
-}
-
-export type ModuleDTO = IModuleDTO;
+import type { Filter } from "./filter.model";
+import type { ListResponse } from "./list.model";
 
 export type ModuleResponse = Prisma.ModuleGetPayload<{}>;
 
-interface IModuleFilter {
-    courseId: string;
-}
+export type ModuleDTO = Pick<
+  ModuleResponse,
+  "courseId" | "title" | "description" | "hours"
+>;
 
-export type ModuleFilter = IModuleFilter;
+export type ModuleFilter = Filter<Pick<ModuleDTO, "courseId">, {}>;
 
-interface IModuleListResponse {
-    data: ModuleResponse[];
-    total: number;
-}
-
-export type ModuleListResponse = IModuleListResponse;
+export type ModuleListResponse = ListResponse<ModuleResponse>;

@@ -1,9 +1,10 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
 import type {
-    ProgressDTO,
-    ProgressListResponse,
-    ProgressResponse,
+  ProgressDTO,
+  ProgressFilter,
+  ProgressListResponse,
+  ProgressResponse,
 } from "../models/progress.model";
 
 export const startModuleProgress = async (
@@ -32,7 +33,8 @@ export const completeModuleProgress = async (
     },
   });
 
-  const increment = (progress.module.hours / progress.enrollment.course.totalHours) * 100;
+  const increment =
+    (progress.module.hours / progress.enrollment.course.totalHours) * 100;
 
   await prisma.enrollment.update({
     where: { id: progress.enrollmentId },
@@ -49,7 +51,7 @@ export const completeModuleProgress = async (
 };
 
 export const getModuleProgress = async (
-  filter: Partial<ProgressDTO>
+  filter: ProgressFilter
 ): Promise<ProgressListResponse> => {
   const where: Prisma.EnrollmentModuleProgressWhereInput = {};
 

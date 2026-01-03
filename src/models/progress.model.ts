@@ -1,24 +1,16 @@
 import type { Prisma } from "@prisma/client";
-
-interface IProgressDTO {
-    enrollmentId: string;
-    moduleId: string;
-}
-
-export type ProgressDTO = IProgressDTO;
+import type { Filter } from "./filter.model";
+import type { ListResponse } from "./list.model";
 
 export type ProgressResponse = Prisma.EnrollmentModuleProgressGetPayload<{
-    include: {
-        enrollment: true,
-        module: true,
-    }
-}>
+  include: {
+    enrollment: true;
+    module: true;
+  };
+}>;
 
-export type ProgressFilter = IProgressDTO;
+export type ProgressDTO = Pick<ProgressResponse, "enrollmentId" | "moduleId">;
 
-interface IProgressListResponse {
-    data: ProgressResponse[];
-    total: number;
-}
+export type ProgressFilter = Filter<ProgressDTO, {}>;
 
-export type ProgressListResponse = IProgressListResponse;
+export type ProgressListResponse = ListResponse<ProgressResponse>;
