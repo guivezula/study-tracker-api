@@ -1,5 +1,10 @@
 
-import type { EnrollmentDTO, EnrollmentFilter, EnrollmentListResponse, EnrollmentResponse } from "../../models/enrollment.model";
+import type {
+  EnrollmentDTO,
+  EnrollmentFilter,
+  EnrollmentListResponse,
+  EnrollmentResponse,
+} from "../../types/enrollment.type";
 import type { GraphQLContext } from "../context";
 
 export const enrollmentResolver = {

@@ -1,6 +1,11 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
-import type { ModuleDTO, ModuleFilter, ModuleListResponse, ModuleResponse } from "../models/module.model";
+import type {
+  ModuleDTO,
+  ModuleFilter,
+  ModuleListResponse,
+  ModuleResponse,
+} from "../types/module.type";
 
 export const createModule = async (data: ModuleDTO): Promise<ModuleResponse> => {
     const module = await prisma.module.create({

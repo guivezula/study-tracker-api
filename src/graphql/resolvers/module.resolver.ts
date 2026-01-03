@@ -1,4 +1,9 @@
-import type { ModuleDTO, ModuleFilter, ModuleListResponse, ModuleResponse } from "../../models/module.model";
+import type {
+  ModuleDTO,
+  ModuleFilter,
+  ModuleListResponse,
+  ModuleResponse,
+} from "../../types/module.type";
 import type { GraphQLContext } from "../context";
 
 export const moduleResolver = {

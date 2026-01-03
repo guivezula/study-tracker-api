@@ -5,7 +5,7 @@ import type {
   CourseFilter,
   CourseListResponse,
   CourseResponse,
-} from "../models/course.model";
+} from "../types/course.type";
 
 export const createCourse = async (
   data: CourseDTO

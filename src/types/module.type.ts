@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
-import type { Filter } from "./filter.model";
-import type { ListResponse } from "./list.model";
+import type { Filter } from "./filter.type";
+import type { ListResponse } from "./list.type";
 
 export type ModuleResponse = Prisma.ModuleGetPayload<{}>;
 

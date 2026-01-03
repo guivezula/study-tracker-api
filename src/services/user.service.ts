@@ -5,7 +5,7 @@ import type {
   UserFilter,
   UserListResponse,
   UserResponse,
-} from "../models/user.model";
+} from "../types/user.type";
 
 export const createUser = async (data: UserDTO): Promise<UserResponse> => {
   return prisma.user.create({ data });

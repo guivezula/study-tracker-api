@@ -3,7 +3,7 @@ import type {
   CourseFilter,
   CourseListResponse,
   CourseResponse,
-} from "../../models/course.model";
+} from "../../types/course.type";
 import type { GraphQLContext } from "../context";
 
 export const courseResolver = {

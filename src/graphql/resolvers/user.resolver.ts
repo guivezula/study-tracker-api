@@ -3,7 +3,7 @@ import type {
   UserFilter,
   UserListResponse,
   UserResponse,
-} from "../../models/user.model";
+} from "../../types/user.type";
 import type { GraphQLContext } from "../context";
 
 export const userResolvers = {

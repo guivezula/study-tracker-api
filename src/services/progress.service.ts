@@ -5,7 +5,7 @@ import type {
   ProgressFilter,
   ProgressListResponse,
   ProgressResponse,
-} from "../models/progress.model";
+} from "../types/progress.type";
 
 export const startModuleProgress = async (
   data: ProgressDTO

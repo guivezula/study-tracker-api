@@ -1,6 +1,11 @@
 
 
-import type { ProgressDTO, ProgressFilter, ProgressListResponse, ProgressResponse } from "../../models/progress.model";
+import type {
+  ProgressDTO,
+  ProgressFilter,
+  ProgressListResponse,
+  ProgressResponse,
+} from "../../types/progress.type";
 import type { GraphQLContext } from "../context";
 
 export const progressResolver = {

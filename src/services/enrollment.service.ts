@@ -1,6 +1,11 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
-import type { EnrollmentDTO, EnrollmentFilter, EnrollmentListResponse, EnrollmentResponse } from "../models/enrollment.model";
+import type {
+  EnrollmentDTO,
+  EnrollmentFilter,
+  EnrollmentListResponse,
+  EnrollmentResponse,
+} from "../types/enrollment.type";
 
 export const createEnrollment = async (
   data: EnrollmentDTO
