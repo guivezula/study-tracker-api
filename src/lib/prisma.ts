@@ -5,10 +5,12 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
+const isTest = process.env.NODE_ENV === "test";
+
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
-    log: ['query'], 
+    log: isTest ? [] : ["query"],
   });
 
 if (process.env.NODE_ENV !== 'production') {

@@ -18,7 +18,7 @@ The goal is to build a clean and scalable API that exposes the same domain model
 - GraphQL
 - Prisma ORM
 - SQLite (development)
-- TypeScript *(optional)*
+- TypeScript
 
 ## 🗂 Planned Features (initial)
 
@@ -38,7 +38,10 @@ The goal is to build a clean and scalable API that exposes the same domain model
 - [x] Documentation with GraphiQL interface
 - [x] Implement Enrollments and Progress tracking on Rest and GraphQL
 - [ ] Add domain validations when updating course and module
-- [ ] Testing (unit and integration tests)
+- [x] Testing courses (unit and e2e tests)
+- [ ] Testing users (unit and e2e tests)
+- [ ] Testing modules (unit and e2e tests)
+- [ ] Testing enrollments and progress (unit and e2e tests)
 - [ ] Deployment to a cloud provider (Thinking about yet to decide)
 - [ ] Dockerization of the application (Thinking about yet to decide)
 

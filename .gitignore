@@ -42,3 +42,7 @@ dist/
 .DS_Store
 
 /src/generated/prisma
+
+# Tests
+/coverage
+/prisma/test.db

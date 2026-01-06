@@ -32,9 +32,8 @@ export const updateCourse = async (req: Request, res: Response) => {
 
 export const deleteCourse = async (req: Request, res: Response) => {
   try {
-    const course = await courseService.deleteCourse(req.params.id!);
-    if (!course) return res.status(404).json({ error: 'Course not found' });
-    res.status(204).send('Course deleted successfully');
+    await courseService.deleteCourse(req.params.id!);
+    res.status(204).send("Course deleted successfully");
   } catch (err: any) {
     res.status(400).json({ error: err.message });
   }
